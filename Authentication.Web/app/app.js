@@ -13,6 +13,18 @@ app.config(function($routeProvider) {
         templateUrl: "/app/views/login.html"
     });
 
+    $routeProvider.when("/list1",
+    {
+        controller: "list1Controller",
+        templateUrl: "/app/views/list1.html"
+    });
+
+    $routeProvider.when("/list2",
+    {
+        controller: "list2Controller",
+        templateUrl: "/app/views/list2.html"
+    });
+
     $routeProvider.otherwise({ redirectTo: "/home" });
 });
 
@@ -22,3 +34,11 @@ app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
     clientId: 'JavaApp'
 });
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
+
+app.run(['authService', function (authService) {
+    authService.fillAuthData();
+}]);

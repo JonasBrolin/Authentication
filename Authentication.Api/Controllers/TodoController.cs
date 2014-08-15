@@ -14,7 +14,7 @@ namespace Authentication.API.Controllers
         [Route("")]
         public IHttpActionResult Get()
         {
-            return this.Ok(new List<string> { "mjölk, socker, ost" });
+            return this.Ok(new List<string> { "mjölk", "socker", "ost" });
         }
 
         [Authorize(Roles = "admin")]
@@ -22,7 +22,7 @@ namespace Authentication.API.Controllers
         [HttpGet]
         public IHttpActionResult Apa()
         {
-            return this.Ok(new List<string> { "mjölk, socker, bröd" });
+            return this.Ok(new List<string> { "mjölk", "socker", "bröd" });
         }
     }
 }

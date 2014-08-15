@@ -68,9 +68,15 @@
     <Content Include="app\app.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\list1Controller.js" />
+    <Content Include="app\controllers\list2Controller.js" />
     <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\services\authInterceptorService.js" />
     <Content Include="app\services\authService.js" />
+    <Content Include="app\services\listService.js" />
     <Content Include="app\views\home.html" />
+    <Content Include="app\views\list1.html" />
+    <Content Include="app\views\list2.html" />
     <Content Include="app\views\login.html" />
     <Content Include="content\css\bootstrap.min.css" />
     <Content Include="Index.html" />

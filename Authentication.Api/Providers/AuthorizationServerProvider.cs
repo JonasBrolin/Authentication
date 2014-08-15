@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+
 using Authentication.API.Entity;
 using Authentication.API.Repository;
 
@@ -87,6 +89,7 @@ namespace Authentication.API.Providers
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
 
+            var roles = new List<IdentityRole>();
             using (AuthRepository repository = new AuthRepository())
             {
                 IdentityUser user = await repository.FindUser(context.UserName, context.Password);
@@ -99,6 +102,8 @@ namespace Authentication.API.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+           
+
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
             identity.AddClaim(new Claim("sub", context.UserName));
@@ -110,7 +115,10 @@ namespace Authentication.API.Providers
                                 "as:client_id", (context.ClientId ?? string.Empty)
                             },
                             {
-                                "userName,", context.UserName
+                                "userName", context.UserName
+                            },
+                            {
+                                "user", "user"
                             }
                         });
 
@@ -141,6 +149,7 @@ namespace Authentication.API.Providers
 
             var newIdentity = new ClaimsIdentity(context.Ticket.Identity);
             newIdentity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
+            
 
             var newTicket = new AuthenticationTicket(newIdentity, context.Ticket.Properties);
             context.Validated(newTicket);

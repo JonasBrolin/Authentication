@@ -19,7 +19,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav caption navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <li data-ng-hide="!authentication.isAuth"> <a href="#/list1">Lista 1</a></li>
+                    <li data-ng-hide="!authentication.isAuth"> <a href="#/list2">Lista 2</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -36,5 +39,9 @@
     <script src="app/controllers/loginController.js"></script>
     <script src="app/services/authService.js"></script>
     <script src="app/controllers/indexController.js"></script>
+    <script src="app/services/authInterceptorService.js"></script>
+    <script src="app/controllers/list1Controller.js"></script>
+    <script src="app/controllers/list2Controller.js"></script>
+    <script src="app/services/listService.js"></script>
 </body>
 </html>
